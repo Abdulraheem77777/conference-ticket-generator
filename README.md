@@ -8,9 +8,7 @@ A responsive and accessible conference ticket generator form built with HTML, CS
 
 ![Project Preview](preview.jpg)
 
-[Live Demo](#) <!-- Replace with Netlify or GitHub Pages link after deployment -->
-
----
+[Live Demo]https://conference777.netlify.app/
 
 ## 🚀 Features
 
