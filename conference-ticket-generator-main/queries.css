@@ -1,0 +1,182 @@
+/* ------------------------------
+   ✅ Mobile: 375px and below 
+   (Design width from style guide)
+--------------------------------- */
+@media (max-width: 37.5em) {
+  body {
+    padding: 2em 0 0 0;
+    margin: 0;
+  }
+
+  .header h1 {
+    font-size: 2.8em;
+  }
+
+  .form-container {
+    padding: 3em 2em;
+  }
+
+  .btn-submit {
+    font-size: 1.5em;
+    padding: 1.1em;
+  }
+
+  .ticket-avatar {
+    width: 4.5em;
+  }
+
+  .img-class {
+    width: 65%;
+  }
+
+  .upload-label {
+    padding: 1.5em;
+  }
+
+  label,
+  .avatar-text,
+  span {
+    font-size: 1.3em;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="file"] {
+    font-size: 1.3em;
+    padding: 1em;
+  }
+}
+
+/* ------------------------------
+   ✅ Small phones: 320px and below 
+--------------------------------- */
+@media (max-width: 32em) {
+  body {
+    padding: 2em 0 0 0;
+
+    margin: 0;
+  }
+
+  .header h1 {
+    font-size: 2.4em;
+  }
+
+  .form-container {
+    padding: 2em 1.5em;
+  }
+
+  .btn-submit {
+    font-size: 1.4em;
+    padding: 1em;
+  }
+
+  .ticket-avatar {
+    width: 4em;
+  }
+
+  .img-class {
+    width: 60%;
+  }
+
+  .upload-label {
+    padding: 1.2em;
+    gap: 0.5em;
+  }
+
+  .upload-icon {
+    width: 3em;
+    height: 3em;
+  }
+
+  .ticket-h4 {
+    font-size: 1.2em;
+  }
+
+  p,
+  small,
+  .upload-label span {
+    font-size: 1.2em;
+  }
+
+  .ticket-details {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    transform: none;
+  }
+}
+@media (max-width: 37.5em) {
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+
+  body {
+    padding: 0.2em 0 0 0;
+    margin: 0;
+  }
+  .form-row {
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .input-group {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+  .general {
+    padding-left: 1rem;
+    padding-right: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  #years,
+  #months,
+  #days {
+    color: hsl(259, 100%, 65%);
+    font-size: 1.2rem;
+  }
+
+  .form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .form-group input {
+    width: 9rem;
+  }
+  .form-group input::placeholder {
+    font-size: 0.9em;
+  }
+  .form button {
+    position: absolute;
+    top: 7.6rem; /* adjust as needed */
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+  }
+
+  .form button::before {
+    display: none;
+  }
+}
+
+@media (max-width: 32em) {
+  .input-group {
+    gap: 0.8rem;
+  }
+
+  .form-group input {
+    width: 6.8rem;
+  }
+
+  .form button {
+    top: 7rem;
+  }
+}

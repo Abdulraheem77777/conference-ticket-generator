@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Belleza&family=Figtree:ital,wght@0,300..900;1,300..900&family=GFS+Didot&family=Inconsolata:wght@200..900&family=Karla:ital,wght@0,200..800;1,200..800&family=Luxurious+Script&family=Outfit:wght@100..900&family=Parisienne&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Yrsa:ital,wght@0,300..700;1,300..700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="queries.css" rel="stylesheet " />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+    <script defer src="script.js"></script>
+    <title>Frontend Mentor | Conference ticket generator</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 62.5%;
+      }
+
+      body {
+        min-height: 100vh;
+        background: hsl(248, 70%, 10%);
+        font-family: "Belleza", sans-serif;
+        background-image: url(assets/images/pattern-squiggly-line-bottom-desktop.svg),
+          url("assets/images/pattern-squiggly-line-top.svg");
+        background-position: bottom left, top right;
+        background-repeat: no-repeat, no-repeat;
+        background-size: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 6rem 2rem;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 3rem;
+        padding: 2rem;
+      }
+
+      .header h1 {
+        font-size: 3.2rem;
+        color: #fff;
+        line-height: 1.3;
+        max-width: 60rem;
+        margin: 0 auto;
+      }
+
+      .form-container {
+        width: 100%;
+        max-width: 42rem;
+
+        border-radius: 12px;
+        padding: 4rem 3rem;
+      }
+      .form {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .form-group {
+        display: flex;
+        flex-direction: column;
+      }
+      h3 {
+        width: 100%;
+        font-size: 1.6rem;
+        line-height: 1.3;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        color: #dee2e6;
+      }
+
+      label,
+      .avatar-text {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+        font-weight: bold;
+        color: #dee2e6;
+      }
+      span {
+        color: #dee2e6;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="file"] {
+        padding: 1rem;
+        font-size: 1.4rem;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: hsl(248, 70%, 10%);
+        color: #fff;
+      }
+
+      input[type="file"] {
+        cursor: pointer;
+        background-color: #f9f9f9;
+      }
+      .ticket {
+        margin-top: 4rem;
+        /* background: #fff; */
+        padding: 2rem;
+        border-radius: 12px;
+        text-align: center;
+      }
+      .ticket-name {
+        font-size: 1.9rem;
+        margin-top: -50px;
+        margin-bottom: 5px;
+      }
+      .github-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        /* margin-top: 2rem; */
+      }
+      .ticket-hub {
+        margin-bottom: 3rem;
+      }
+      .ticket.hidden {
+        display: none;
+      }
+      .highlight {
+        color: #ffa8a8;
+      }
+      .ticket-content {
+        position: relative;
+        width: 100%;
+        /* padding: -50rem; */
+        /* background-color: #f9f9f9; */
+      }
+      .ticket-h4 {
+        color: #dee2e6;
+        position: absolute;
+        top: 0%;
+        left: 10%;
+        margin-top: 5rem;
+        width: 50%;
+      }
+      .ticket-bg {
+        width: 100%;
+        border-radius: 12px;
+      }
+
+      .ticket-avatar {
+        width: 50px;
+        border-radius: 9px;
+        margin-top: -60px;
+        margin-bottom: 2rem;
+      }
+
+      .ticket-details {
+        /* position: absolute; */
+        display: flex;
+        /* bottom: 2%;
+        left: 2%; */
+        gap: 2rem;
+        transform: translate(5%, -50%);
+
+        color: #000;
+      }
+
+      input:focus {
+        outline: 2px solid hsl(245, 80%, 70%);
+      }
+
+      small {
+        font-size: 1.2rem;
+        color: #dee2e6;
+        margin-top: 0.3rem;
+      }
+
+      .btn-submit {
+        background-color: hsl(7, 71%, 60%);
+        color: white;
+        font-size: 1.6rem;
+        font-weight: bold;
+        padding: 1.2rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background 0.3s ease;
+      }
+      p {
+        font-size: 1.2rem;
+        color: #dee2e6;
+      }
+
+      .btn-submit:hover {
+        background-color: hsl(7, 88%, 67%);
+      }
+      .btn-submit:focus {
+        outline: 2px solid hsl(245, 80%, 70%);
+      }
+      .avatar-upload {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .upload-label {
+        border: 2px dashed #ccc;
+        border-radius: 10px;
+        padding: 2rem;
+        text-align: center;
+        cursor: pointer;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        background-color: hsl(248, 70%, 10%);
+        transition: border-color 0.3s;
+      }
+
+      .upload-label:hover {
+        border-color: hsl(245, 80%, 60%);
+      }
+
+      .upload-icon {
+        width: 40px;
+        height: 40px;
+        opacity: 0.7;
+      }
+
+      .upload-label span {
+        font-size: 1.4rem;
+        color: #dee2e6;
+      }
+
+      .upload-label small {
+        font-size: 1.2rem;
+        color: #777;
+      }
+      .img-class {
+        width: 70%;
+        margin-bottom: 2rem;
+        /* text-align: left; */
+      }
+      .ticketer {
+        width: 45%;
+        margin-top: 2rem;
+        position: absolute;
+        top: 0%;
+        left: 5%;
+      }
+      .error-msg {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        margin-top: 0.5rem;
+        color: hsl(7, 100%, 60%);
+        font-size: 1.2rem;
+      }
+
+      .error-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+      }
+      .success-emoji {
+        font-size: 2.4rem;
+        margin-top: 0.5rem;
+        color: hsl(140, 60%, 50%); /* green color for success */
+        animation: popIn 0.3s ease;
+      }
+      .taye {
+        color: red;
+      }
+
+      /* Optional: smooth entrance animation */
+      @keyframes popIn {
+        0% {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="assets/images/logo-full.svg" class="img-class" alt="logo" />
+    </div>
+    <header class="header">
+      <h1>
+        Your Journey to Coding Conf<br />
+        2025 Starts Here!
+      </h1>
+      <h3>
+        Secure &nbsp; your spot at &nbsp;next year's biggest coding &nbsp;
+        conference.
+      </h3>
+    </header>
+
+    <main class="form-container">
+      <form class="form" novalidate>
+        <div class="form-group avatar-upload">
+          <p class="avatar-text">Upload Avatar</p>
+
+          <label for="avatar" class="upload-label">
+            <img
+              src="assets/images/icon-upload.svg"
+              alt=""
+              class="upload-icon"
+            />
+            <span class="upload-text">Drag and drop or click to upload</span>
+          </label>
+          <small>JPG or PNG, max size: 500KB</small>
+
+          <input
+            type="file"
+            id="avatar"
+            accept="image/png, image/jpeg"
+            hidden
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="fullname">Full Name</label>
+          <input
+            type="text"
+            id="fullname"
+            name="fullname"
+            placeholder="Your name"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@email.com"
+            required
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="github">GitHub Username</label>
+          <input
+            type="text"
+            id="github"
+            name="github"
+            placeholder="@yourusername"
+            required
+          />
+        </div>
+
+        <button type="submit" class="btn-submit">Generate My Ticket</button>
+      </form>
+      <!-- <div class="error-msg"></div> -->
+      <section class="ticket hidden" id="ticket">
+        <div class="ticket-content">
+          <img src="assets/images/logo-full.svg" class="ticketer" alt="logo" />
+          <p class="ticket-h4">jan&nbsp; 31 2025 / Austin, &nbsp; Tx</p>
+          <img
+            src="assets/images/pattern-ticket.svg"
+            alt="Ticket"
+            class="ticket-bg"
+          />
+          <div class="ticket-details">
+            <div>
+              <img id="ticket-avatar" class="ticket-avatar" alt="User avatar" />
+            </div>
+            <div>
+              <div><p class="ticket-name"></p></div>
+              <div><p class="ticket-hub"></p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
+<!--/* ------------------------------
+   ✅ Mobile: 375px and below 
+   (Design width from style guide)
+@media (max-width: 37.5em) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  body {
+    padding: 0.2em 0 0 0;
+    margin: 0;
+  }
+  h2 {
+    font-size: 1.2em;
+    margin-left: 1.2em;
+    margin-bottom: 1em;
+    text-align: left;
+  }
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+  }
+  .images {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1em;
+  }
+  .image-container {
+    max-width: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6em; /* space between image and button 
+    padding: 0.5em;
+  }
+  .imger {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+  }
+  .add-to-cart {
+    font-size: 0.7em;
+    padding: 0.4em;
+    border-radius: 0.4em;
+    text-align: center;
+  }
+  .image-container h3 {
+    font-size: 1.2rem;
+    margin-right: 2rem;
+  }
+  .image-container p {
+    font-size: 1rem;
+    margin-right: 2rem;
+  }
+  .price {
+    font-size: 1rem;
+    margin-right: 2rem;
+  }
+} */
+@media (max-width: 37.5em) {
+  html,
+  body {
+    overflow-x: hidden;
+    width: 100vw;
+    /* max-width: 60%; */
+  }
+
+  body {
+    padding: 0.2em 0 0 0;
+    margin: 0;
+  }
+
+  h2 {
+    /* font-size: 1.2em;
+    margin-left: 1.2em;
+    margin-bottom: 1em;
+    text-align: left; */
+
+    font-size: 1.2em;
+    padding: 0 1.2em;
+    text-align: left;
+    margin-bottom: 1em;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.1em; */
+    /* gap: 0.1rem; */
+  }
+
+  .images {
+    display: flex;
+    flex-direction: column;
+    /* gap: 0.1em; */
+  }
+
+  .image-container {
+    /* width: 100%; */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5em;
+    /* gap: 0.6em; */
+    max-width: 150px;
+    width: 100vw;
+  }
+
+  .imger {
+    width: 10em;
+    height: 10em;
+    object-fit: cover;
+    display: block;
+    /* max-width: 100%; */
+  }
+
+  .add-to-cart {
+    font-size: 0.7em;
+    padding: 0.4em;
+    border-radius: 0.4em;
+    text-align: center;
+  }
+
+  .image-container h3,
+  .image-container p {
+    font-size: 0.8em;
+
+    margin-right: 7em;
+  }
+  .price {
+    font-size: 0.8em;
+    margin-right: 10em;
+    text-align: left;
+    /* max-width: 90%; */
+    word-wrap: break-word;
+  }
+}
+.yes-container {
+  padding: 1em 1em;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.yes-container h3 {
+  font-size: 1.2em;
+}
+
+.cart-item h4 {
+  font-size: 1em;
+}
+.cart-item p {
+  font-size: 0.6em;
+}
+.cart-item p span {
+  font-size: 0.6em;
+}
+.total-label {
+  font-size: 1em;
+}
+.total-price {
+  font-size: 1.2em;
+}
+.click-Btn {
+  font-size: 1em;
+  padding: 0.5rem;
+}
+.cart-items h4 {
+  font-size: 0.4em;
+}
+.cart-items p {
+  font-size: 1em;
+}
+.cart-items p span {
+  font-size: 1em;
+}-->
